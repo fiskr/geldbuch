@@ -16,6 +16,8 @@
 	<li><a href="view/transaction.php">Transactions</a></li>
 	
 	<li><a href="view/account.php">Accounts</a></li>
+	
+	<li><a href="controller/account-business.php">Make Locations</a></li>
 </div>
 
 

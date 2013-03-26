@@ -3,9 +3,27 @@ table { background-color:#AA99BB; border-collapse: collapse;}
 table td { text-align: center; border: 5px; }
 table tr { text-align: center; border: 2px; }
 input {
-background-color: black;
-color: white;
-border: 0px solid;
-outline:none;
-text-align: center;
+	background-color: black;
+	color: white;
+	border: 0px solid;
+	outline:none;
+	text-align: center;
+}
+
+/*account-business.php elements*/
+#accountSelectDiv{
+	float: left;
+}
+
+#institutionSelectDiv{
+	float: right;
+}	
+
+#sourceDiv{
+	text-align: center;
+	float: center;
+}
+
+#sourceForm{
+	text-align: center;
 }

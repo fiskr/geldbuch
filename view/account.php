@@ -6,7 +6,7 @@
 <link rel="stylesheet" type="text/css" href="../geldbuch.css"/>
 <link rel="shortcut icon" href="../images/amanita.ico"/>
 <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.0.js"></script>
-<script type = "text/javascript" src = "geldbuch.js"></script>
+<script type = "text/javascript" src = "../geldbuch.js"></script>
 
 </head>
 
@@ -34,7 +34,7 @@ if(!$er){
 }
 //
 //send along SQL select statement,
-$selectStatement = "SELECT id, name, description FROM account;";
+$selectStatement = "SELECT account.id, SUM(transaction.amount), account.name, account.description FROM account, transaction WHERE account.id = transaction.account_id GROUP BY transaction.account_id;";
 //echo "<br/>" . $selectStatement;
 $result = mysql_query($selectStatement);
 //echo "<p>".$result."</p>";
@@ -50,12 +50,13 @@ if (!$result) {
 	echo $row[$i];
 }*/
 $num_rows = mysql_num_rows($result);
-print "<TABLE align=center><TR><TH>ID</TH><TH>Name</TH><TH>Description</TH>";
+print "<TABLE align=center><TR><TH>ID</TH><TH>Total</TH><TH>Name</TH><TH>Description</TH></TR>";
 for ($i = 0; $i < $num_rows; $i++) {
    $row = mysql_fetch_row($result);
    print "<TR><TD class='account_id' id='account$row[0]'>$row[0]</TD>
-   <TD class='account_name'>$row[1]</TD>
-   <TD class='account_description'>$row[2]</TD></TR>";
+   <TD class='account_sum'>$row[1]</TD>
+   <TD class='account_name'>$row[2]</TD>
+   <TD class='account_description'>$row[3]</TD></TR>";
    print "\n";
 }
 print "</TABLE>";

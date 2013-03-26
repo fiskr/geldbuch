@@ -6,7 +6,7 @@
 <link rel="stylesheet" type="text/css" href="../geldbuch.css"/>
 <link rel="shortcut icon" href="../images/mushroom2.ico"/>
 <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.0.js"></script>
-<script type = "text/javascript" src = "geldbuch.js"></script>
+<script type = "text/javascript" src = "../geldbuch.js"></script>
 
 </head>
 
@@ -50,14 +50,16 @@ if (!$result) {
 	echo $row[$i];
 }*/
 $num_rows = mysql_num_rows($result);
-print "<TABLE align=center><TR><TH>ID</TH><TH>Date</TH><TH>Account</TH><TH>Description</TH><TH>Amount</TH>";
+print "<TABLE align=center><TR><TH>ID</TH><TH>Date</TH><TH>Account</TH><TH>Description</TH><TH>Amount</TH></TR>";
 for ($i = 0; $i < $num_rows; $i++) {
    $row = mysql_fetch_row($result);
-   print "<TR><TD class='transaction_id' id='transaction$row[0]'>$row[0]</TD>
+   print "<TR>
+   <TD class='transaction_id' id='transaction$row[0]'>$row[0]</TD>
    <TD class='transaction_date'>$row[1]</TD>
    <TD class='transaction_account_id'>$row[2]</TD>
    <TD class='transaction_description'>$row[3]</TD>
-   <TD class='transaction_amount'>$row[4]</TD>";
+   <TD class='transaction_amount'>$row[4]</TD>
+   </TR>";
    print "\n";
 }
 print "</TABLE>";
